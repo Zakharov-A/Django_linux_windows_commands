@@ -1,0 +1,48 @@
+
+venv
+pip3 --version
+
+python -m venv .venv or python -m venv myenv
+Windows:
+myenv\Scripts\activate
+
+Mac/Linux:
+source .venv/bin/activate
+
+pip install package_name
+pip install package_name==1.0.0
+
+Можно также установить пакеты из файла зависимостей, такого как `requirements.txt`, с помощью команды:
+pip install -r requirements.txt
+
+pip uninstall package_name
+
+deactivate
+
+Windows
+rd /s /q myenv
+
+Mac/Linux
+rm -rf myenv
+
+#-----------
+
+pipenv
+sudo apt install pipenv
+
+
+pipenv install requests
+
+pipenv shell
+
+exit
+
+pipenv install
+
+pipenv install autopep8
+
+pipenv graph
+
+pipe update
+
+

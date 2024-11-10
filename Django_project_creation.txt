@@ -1,0 +1,27 @@
+Model
+View
+Controller
+
+pipenv install django==4.0.8
+
+pipenv shell
+
+pipenv graph
+
+django-admin startproject base .
+
+python manage.py runserver
+
+python manage.py runserver 9000
+
+http://127.0.0.1:8000/
+http://127.0.0.1:8000/admin/
+
+# Сreate an application
+
+python manage.py startapp app_name
+
+
+
+
+

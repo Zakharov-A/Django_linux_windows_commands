@@ -1,0 +1,6 @@
+
+$ git config --global user.name "Your Real Name"
+$ git config --global user.email "you@email.com"
+
+
+
