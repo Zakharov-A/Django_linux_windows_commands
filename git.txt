@@ -1,6 +1,13 @@
 
+
+
 $ git config --global user.name "Your Real Name"
 $ git config --global user.email "you@email.com"
 
-
-
+echo "# courses_priject" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Zakharov-A/courses_priject.git
+git push -u origin main
