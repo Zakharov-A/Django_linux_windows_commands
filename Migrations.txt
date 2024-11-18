@@ -36,6 +36,12 @@ Category.objects.get(pk=1).title
 
 Category.objects.filter(pk=1)
 
+Category.objects.filter(title='Python Programming')
+
+
+
+
+
 
 
 
