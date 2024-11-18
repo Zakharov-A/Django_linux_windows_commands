@@ -10,4 +10,37 @@ python manage.py makemigrations
 
 python manage.py migrate
 
+Data base
+
+python manage.py shell
+
+from shop.models import Category, Course
+
+Course.objects.all()
+Category.objects.all()
+
+new_category = Category(title='Python Programming')
+
+new_category.save()
+
+new_category.id
+
+new_category.title
+
+new_category.created_at
+
+Category.objects.get(pk=1)
+
+Category.objects.get(pk=1).id
+Category.objects.get(pk=1).title
+
+Category.objects.filter(pk=1)
+
+
+
+
+
+
+
+
 
