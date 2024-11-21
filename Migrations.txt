@@ -10,7 +10,7 @@ python manage.py makemigrations
 
 python manage.py migrate
 
-Data base
+#### Data base ####
 
 python manage.py shell
 
@@ -19,7 +19,7 @@ from shop.models import Category, Course
 Course.objects.all()
 Category.objects.all()
 
-new_category = Category(title='Python Programming')
+new_category = Category(title='Programming')
 
 new_category.save()
 
@@ -37,6 +37,33 @@ Category.objects.get(pk=1).title
 Category.objects.filter(pk=1)
 
 Category.objects.filter(title='Python Programming')
+
+from django import db
+db.connections.close_all()
+
+django.db.utils.OperationalError: database is locked
+sudo fuser -v db.sqlite3
+sudo fuser -k db.sqlite3
+
+category = Category.objects.get(id=4)
+
+category.course_set.all()
+
+category.course_set.create(title="Complete Python Guide", price=99.00
+, students_qty=100, reviews_qty=50)
+
+category.course_set.create(title="Django", price=120.60
+, students_qty=85, reviews_qty=50)
+
+Course.objects.all()
+
+Course.objects.get(pk=1)
+
+[course.title for course in Course.objects.all()]
+
+quit()
+
+
 
 
 
