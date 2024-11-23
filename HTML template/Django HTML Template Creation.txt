@@ -1,0 +1,20 @@
+#### Connecting an HTML template ####
+### In VS code install the Django extension
+
+### views.py in my_app
+from django.shortcuts import render
+from django.http import HttpResponse
+from .models import Course
+
+
+def index(request):
+    courses = Course.objects.all()
+    return render(request, 'courses.html', {'courses': courses})
+    
+### HTML template
+
+        {% for course in courses %}
+        {% endfor %}
+
+
+    
