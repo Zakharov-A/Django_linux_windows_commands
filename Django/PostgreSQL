@@ -1,0 +1,78 @@
+#-- installation --
+sudo apt-get update 
+sudo apt-get dist-upgrade -y 
+
+sudo apt update && sudo apt upgrade -y	
+sudo apt update && sudo apt dist-upgrade -y	
+sudo apt install postgresql -y
+
+sudo systemctl start postgresql
+systemctl status postgresql
+
+sudo su - postgres
+
+Далее следуют другие полезные команды systemctl для управления службой Postgres в systemd.
+
+systemctl start postgresql
+systemctl restart postgresql
+systemctl stop postgresql
+
+Чтобы перечитать конфигурацию после перезагрузки выполните:
+
+systemctl reload postgresql
+
+под root
+passwd postgres
+
+psql -c "ALTER USER postgres WITH PASSWORD '6699';"
+
+vim /etc/postgresql/11/main/pg_hba.conf
+
+local all all md5
+
+systemctl restart postgresql
+
+su - postgres
+
+psql
+
+Для отображения списка доступных баз данных:
+\l
+
+
+Чтобы создать базу данных с именем «test_db», выполните следующую SQL команду:
+
+CREATE DATABASE test_db;
+
+Чтобы создать пользователя и предоставить ему права доступа к базе данных, которую мы создали ранее, выполните команды:
+
+CREATE DATABASE store_db;
+
+CREATE ROLE store_username with password 'store_password';
+
+ALTER ROLE "store_username" WITH LOGIN;
+
+GRANT ALL PRIVILEGES ON DATABASE store_db to store_username;
+
+ALTER USER "store_username" CREATEDB;
+
+Посмотреть какие есть базы данных:
+\list
+
+Посмотреть есть ли записи в базе данных:
+\dt
+
+pip install psycopg2-binary
+pip install psycopg2-binary
+
+
+
+
+postgres=# 
+CREATE USER testuser WITH ENCRYPTED PASSWORD '1234';
+CREATE ROLE
+postgres=# 
+GRANT ALL PRIVILEGES ON DATABASE test_db to testuser;
+GRANT
+
+

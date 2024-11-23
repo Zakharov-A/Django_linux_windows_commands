@@ -1,0 +1,34 @@
+#--ipython and shell_plus--
+pip install django-extensions
+pip install ipython
+идем в settings.py ->  INSTALLED_APPS и добавляем приложение django_extensions
+
+запускаем через ./manage.py shell_plus
+django-extensions - автоматически импортирует нужные нам модели и классы(например, ProductCategory, Product и другие, о которых узнаете позже)
+
+ipyhton - для удобства использования терминала, дает возможность вводить команды clear, cd, pwd не открывая новый
+./manage.py shell_plus
+python3 manage.py shell_plus
+
+Product.objects.all()
+
+User.objects.all()
+User.objects.last().first_name
+User.objects.last().password
+User.objects.last().delete()
+
+from django.urls import reverse
+from users.models import User
+from users.models import EmailVerification
+r = EmailVerification.objects.last()
+link = reverse('users:email_verification', kwargs={'email': r.user.email, 'code': r.code})
+from django.conf import settings
+ verification_link = f'{settings.DOMAIN_NAME} {link}'
+
+verification_link
+'http://localhost:8000 /users/verify/li@li.com/538e7016-8247-49dc-87df-6d13593505ba/'
+
+user.is_verified_email
+
+
+

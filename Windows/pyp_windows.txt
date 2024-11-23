@@ -1,0 +1,72 @@
+major->minor->pach exemple 22.3.1
+
+linux
+pip3 --version
+
+windows
+pip --version
+
+linux
+pip3 list
+
+windows
+pip list
+
+windows
+python.exe -m pip install --upgrade pip
+
+pip install pygame==2.1.3dev8
+
+pip uninstall pygame
+
+pipenv
+
+pip install pipenv 
+
+pip install virtualenv
+
+python -m venv virt_name
+
+windows
+
+C:\Users\eugen>cd C:\django  Переход к папке будущей виртуальной среды
+
+C:\django>python -m venv .venv  Создание виртуальной среды
+
+C:\django>
+
+Активация в Windows в коммандной строке
+
+.venv\Scripts\activate.bat
+
+Активация в Windows в PowerShell
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+.venv\Scripts\Activate.ps1
+
+deactivate
+
+# Создание виртуального окружения для проекта с Django 2.2
+python -m venv django_2_2_env
+
+# Создание виртуального окружения для проекта с Django 3.2
+python -m venv django_3_2_env
+
+django_2_2_env\Scripts\activate
+pip install django==2.2
+
+pip -V
+deactivate
+
+python -m venv --help
+django_3_2_env\Scripts\activate
+pip install django==3.2
+
+
+c:\django>django-admin startproject metanit
+
+python manage.py runserver
+
+python manage.py startapp название_приложения
+
+
