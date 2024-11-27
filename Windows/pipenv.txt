@@ -1,0 +1,56 @@
+pip install pipenv
+
+pipenv --version
+
+mkdir my_project
+
+cd my_project
+
+#### Создание виртуального окружения в папке проекта 
+
+### В терминале windows
+set PIPENV_VENV_IN_PROJECT=1 pipenv --python 3.13
+set PIPENV_VENV_IN_PROJECT 1 --- установить в терминале из под администратора для всех проектов
+
+### В PowerShell
+### Чтобы отражалось что находимся в окружении
+
+New-Item -Path $PROFILE -ItemType File -Force
+notepad $PROFILE
+
+## Добавить код
+function prompt {
+    if ($env:VIRTUAL_ENV) {
+        # Если виртуальное окружение активно, показываем его имя и текущую директорию
+        $venv_name = Split-Path -Leaf $env:VIRTUAL_ENV
+        return "($venv_name) " + (Get-Location).ToString() + "> "
+    }
+    else {
+        # Если виртуальное окружение не активно, показываем просто текущую директорию
+        return (Get-Location).ToString() + "> "
+    }
+}
+##
+
+$env:PIPENV_VENV_IN_PROJECT = 1
+
+pipenv install
+
+pipenv install <package_name>
+
+pipenv shell
+
+pipenv graph
+
+
+
+
+#### Создание виртуального окружения по умолчанию в C:\Users\user_name\.virtualenvs
+
+pipenv --python 3.11
+
+pipenv --venv
+
+pipenv install requests
+
+pipenv shell

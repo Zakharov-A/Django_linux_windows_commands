@@ -1,0 +1,51 @@
+python -m platform
+
+python -c "import platform; print(platform.python_implementation())"
+
+Win+R на клавиатуре, ввести sysdm.cpl и нажать Enter
+
+Создаем командное окружение в командной строке
+
+py -0 or py --list
+py -3.6 -m venv env
+python -m venv <venv_name>
+пример python -m venv myenv
+Активируем
+
+Windows (cmd.exe): <venv_name>\Scripts\activate
+Windows (PowerShell): .<venv_name>\Scripts\Activate.ps1
+Unix или macOS: source myenv/bin/activate
+Деактивируем
+
+deactivate
+Получение списка установленных библиотек
+
+pip list
+pip freeze
+pip freeze > requirements.txt
+Установка виртуального окружения из файла requirements.txt
+
+pip install -r requirements.txt
+Бонус - работа с версиями в requirements.txt
+
+Для указания диапазона версий зависимости в файле requirements.txt, вы можете использовать операторы сравнения ==, >=, <=, <, > и указать версию или диапазон версий.
+
+Например:
+
+Точная версия: package_name==1.2.3
+
+Диапазон версий с минимальной версией: package_name>=1.2.3 (Это установит версию package_name, начиная с 1.2.3 и выше)
+
+Диапазон версий с максимальной версией: package_name<=2.0.0 (Это установит версию package_name, не превышающую 2.0.0)
+
+Диапазон версий с обеими границами package_name>=1.0.0,<=2.0.0 (Это установит версию package_name в диапазоне от 1.0.0 до 2.0.0 включительно)
+
+Использование оператора "не равно" package_name!=3.0.0 (Это укажет, что версия package_name не должна быть равной 3.0.0)
+
+Использование верхней границы без нижней границы package_name<=4.0.0 (Это укажет, что версия package_name должна быть не выше 4.0.0, но не ограничивает ее минимальной версией)
+
+Инсталляция виртуального окружения с определенной версией Python
+
+необходимо пронсталировать дополнительную библиотеку pip install virtualenv
+
+Пример команды: python -m virtualenv -p "C:\Program Files\Python310\python.exe"  my_second_env

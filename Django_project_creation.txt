@@ -2,12 +2,6 @@ Model
 View
 Controller
 
-pipenv install django==4.0.8
-
-pipenv shell
-
-pipenv graph
-
 django-admin startproject base .
 
 python manage.py runserver
