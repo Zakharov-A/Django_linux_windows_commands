@@ -34,6 +34,8 @@ function prompt {
 
 $env:PIPENV_VENV_IN_PROJECT = 1
 
+pipenv --python 3.11
+
 pipenv install
 
 pipenv install <package_name>
@@ -42,7 +44,9 @@ pipenv shell
 
 pipenv graph
 
+pipenv install django==4.0.8
 
+pipenv --venv --- Shows the path to the current virtual environment
 
 
 #### Создание виртуального окружения по умолчанию в C:\Users\user_name\.virtualenvs

@@ -2,7 +2,7 @@ Model
 View
 Controller
 
-django-admin startproject base .
+django-admin startproject base . --- Creates a project in the current folder
 
 python manage.py runserver
 
@@ -13,7 +13,9 @@ http://127.0.0.1:8000/admin/
 
 # Сreate an application
 
-python manage.py startapp app_name
+python manage.py startapp app_name ---
+
+
 
 
 
