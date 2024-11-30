@@ -13,7 +13,7 @@ http://127.0.0.1:8000/admin/
 
 # Сreate an application
 
-python manage.py startapp app_name --- Create an application
+ app_name --- Create an application
 
 
 

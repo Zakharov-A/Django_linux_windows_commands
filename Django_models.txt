@@ -1,0 +1,79 @@
+#### Adding the __str__ magic method to models ####
+### models.py in my_app_name ###
+
+### before
+
+from django.db import models
+from django.utils import timezone
+
+class Category(models.Model):
+    title = models.CharField(max_length=255)
+    created_at = models.DateTimeField(default=timezone.now)
+
+class Recipes(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    cooking_time = models.PositiveIntegerField()
+    ingredients = models.TextField()
+    number_of_servings = models.TextField()
+    cooking_process = models.PositiveIntegerField()
+    reviews_qty = models.IntegerField()
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="recipes" 
+        )
+    created_at = models.DateTimeField(default=timezone.now)
+
+### after
+
+from django.db import models
+from django.utils import timezone
+
+class Category(models.Model):
+    title = models.CharField(max_length=255)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.title
+
+class Recipes(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    cooking_time = models.PositiveIntegerField()
+    ingredients = models.TextField()
+    number_of_servings = models.TextField()
+    cooking_process = models.PositiveIntegerField()
+    reviews_qty = models.IntegerField()
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="recipes" 
+        )
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.title
+
+#### Register the application in settings.py
+
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'recipes.apps.RecipesConfig',
+]
+
+#### Afterwards we enter the created tables into the database
+
+python manage.py makemigrations
+
+python manage.py migrate

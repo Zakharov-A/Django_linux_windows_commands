@@ -1,0 +1,40 @@
+#### 
+#### Before
+
+from django.shortcuts import render
+
+# Create your views here.
+
+#### After
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+def index(request):
+    return HttpResponse("Hello and fack you!")
+
+####
+
+#### Create_urls.py_file_in_application_package
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index')
+]
+
+#### Adding_Application_Routes_to_Project_Routes
+### urls.py in the main application
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('shop/', include('shop.urls'))
+]
+
+####
+
