@@ -77,3 +77,123 @@ INSTALLED_APPS = [
 python manage.py makemigrations
 
 python manage.py migrate
+
+
+#### Creating Categories Using the Command Line
+
+python manage.py shell
+
+from recipes.models import Category, Recipes 
+
+Category.objects.all()
+
+Recipes.objects.all()
+
+### Creating a class object
+
+### 
+
+new_category = Category(title='Cakes')
+
+new_category.save()
+
+new_category.id
+
+new_category.title
+
+new_category.created_at
+
+Category.objects.get(pk=1)
+
+Category.objects.get(pk=1).id
+
+Category.objects.get(pk=1).title
+
+Category.objects.filter(pk=1)
+
+###
+
+category = Category.objects.get(id=1)
+
+category.recipe.all()
+
+category.recipe.create(
+	title="Simple meringue",
+	description = "At first glance, meringue may seem like a difficult to prepare and capricious delicacy.",
+	cooking_time = 120,
+	ingredients = "Eggs (whites only) – 2 pcs. (60 g)<br>Icing sugar – 120 g<br>Lemon juice – 1 teaspoon<br>Salt – 1 pinch",
+	number_of_servings = 6,
+	cooking_process= "Mix flour with baking powder, sift and add in parts to the egg mixture, stirring with a mixer.",
+	reviews_qty = 20
+	 )
+
+[recipe.title for recipe in Recipes.objects.all()]
+
+
+exit()
+
+#### Connecting a model in the admin panel
+### admin.py in module app_name
+##
+
+from django.contrib import admin
+from . import models
+
+admin.site.register(models.Category)
+admin.site.register(models.Recipes)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
