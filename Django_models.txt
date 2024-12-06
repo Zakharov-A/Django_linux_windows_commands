@@ -129,7 +129,7 @@ category.recipe.create(
 
 [recipe.title for recipe in Recipes.objects.all()]
 
-
+quit()
 exit()
 
 #### Connecting a model in the admin panel

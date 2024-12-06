@@ -1,0 +1,125 @@
+####
+
+pipenv install django-tastypie
+
+python manage.py startapp api
+
+#### in settings.py
+### >>
+'shop.apps.ShopConfig',
+    'api.apps.ApiConfig'
+
+#### models.py in api app
+### >
+
+from tastypie.resources import ModelResource
+from shop.models import Category, Course
+
+
+class CategoryResource(ModelResource):
+    class Meta:
+        queryset = Category.objects.all()
+        resource_name = 'categories'
+        allowed_methods = ['get']
+
+class CourseResource(ModelResource):
+    class Meta:
+        queryset = Course.objects.all()
+        resource_name = 'courses'
+        allowed_methods = ['get', 'post', 'delete']
+        
+              
+###
+
+#### urls.py in base app
+### >>
+
+from django.contrib import admin
+from django.urls import path, include
+from api.models import CategoryResource, CourseResource
+from tastypie.api import Api
+
+api = Api(api_name='v1')
+course_resource = CourseResource()
+category_resource = CategoryResource()
+api.register(course_resource)
+api.register(category_resource)
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('shop/', include('shop.urls')),
+    path('api/', include(api.urls)),
+]
+
+#### Download the app to get started with the Postman API Platform
+
+#### Setting up authentication and authorization for the API
+
+#### Create an authentication file in the API application
+### authentication.py in api
+### <
+
+from tastypie.authentication import ApiKeyAuthentication
+
+class CustomAuthentication(ApiKeyAuthentication):
+    def is_authenticated(self, request, **kwargs):
+        if request.method == 'Get':
+            return True
+        return super().is_authenticated(request, **kwargs)
+
+
+#### models.py in api
+### >>
+
+class CourseResource(ModelResource):
+    class Meta:
+        queryset = Course.objects.all()
+        resource_name = 'courses'
+        allowed_methods = ['get', 'post', 'delete']
+        authentication = CustomAuthentication()
+        authorization = Authorization()
+
+#### settings.py in base
+### >>
+
+'api.apps.ApiConfig',
+    'tastypie'
+
+#### Applying migrations
+
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+#### In the web admin panel in TASTYPIE we create API keys
+
+#### In models.py in the api application
+### >>
+
+class CourseResource(ModelResource):
+    class Meta:
+        queryset = Course.objects.all()
+        resource_name = 'courses'
+        allowed_methods = ['get', 'post', 'delete']
+        authentication = CustomAuthentication()
+        authorization = Authorization()
+
+    def hydrate(self, bundle):
+        bundle.obj.category_id = bundle.data['category_id']
+        return bundle 
+    
+    def dehydrate(self, bundle):
+        bundle.data['category_id'] = bundle.obj.category
+        return bundle
+
+    def dehydrate_title(self, bundle):
+        return bundle.data['title'].upper()
+	
+
+#### In Posman, create a new course using a POST request
+
+
+
+
+

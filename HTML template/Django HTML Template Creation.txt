@@ -1,5 +1,6 @@
 #### Connecting an HTML template ####
 ### In VS code install the Django extension
+### In the application folder, create a templates folder
 
 ### views.py in my_app
 from django.shortcuts import render
@@ -10,11 +11,60 @@ from .models import Course
 def index(request):
     courses = Course.objects.all()
     return render(request, 'courses.html', {'courses': courses})
+
+#### Set up activation of emmet abbreviations
+###  settings.json 
+ "emmet.includeLanguages": {
+      "django-html": "html"
+  },
+
+###
+    "gleam": "gleam run -m $fileNameWithoutExt",
+  },
+  "emmet.includeLanguages": {
+      "django-html": "html"
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+}
+###
     
 ### HTML template
 
         {% for course in courses %}
+	###
+	{{ course.title }}
+	###
         {% endfor %}
 
 
-    
+#### Creating a Basic Page
+### Create a base.html file in the templates folder
+### Creating a block in the base page with content that will be connected
+
+<title>{% block title %}{% endblock %}</title>
+
+<body>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+  
+</body>
+
+#### Code in the file with the included content
+
+{% extends 'base.html' %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %} 
+
+### Content ###
+
+{% endblock %}
+
+
+
+
+
+
